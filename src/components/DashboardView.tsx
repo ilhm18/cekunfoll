@@ -163,9 +163,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ data, onReset }) =
               Selesai
             </span>
           </div>
-          <p className="text-xs text-neutral-400 mt-0.5 font-mono">
-            {cleanFollowing.length} Following · {cleanFollowers.length} Followers
-          </p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -243,83 +240,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ data, onReset }) =
           </div>
           <p className="text-[11px] text-neutral-400 mt-1">Saling mengikuti (mutual)</p>
         </button>
-      </div>
-
-      {/* Pemberitahuan: Mengapa ada akun yang tidak ditemukan saat dibuka */}
-      <div className="rounded-2xl border border-white/[0.08] bg-neutral-900/70 backdrop-blur-md overflow-hidden transition-all shadow-md">
-        <button
-          onClick={() => setShowExplanation(!showExplanation)}
-          className="w-full p-4 flex items-center justify-between text-left text-neutral-300 hover:text-white transition-colors cursor-pointer"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="p-1.5 rounded-lg bg-rose-500/15 text-rose-400 shrink-0">
-              <HelpCircle className="w-4 h-4" />
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs sm:text-sm font-bold text-white tracking-tight">
-                Pemberitahuan: Kenapa ada akun yang tidak ditemukan atau tidak ada saat dibuka?
-              </p>
-              <p className="text-[11px] text-neutral-400 truncate mt-0.5">
-                Penyebab munculnya pesan &quot;Sorry, this page isn&apos;t available&quot; di Instagram
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 shrink-0 ml-2">
-            <span className="text-[11px] text-rose-400 font-semibold hidden sm:inline">
-              {showExplanation ? 'Tutup' : 'Lihat Penyebab'}
-            </span>
-            <ChevronDown
-              className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
-                showExplanation ? 'rotate-180 text-rose-400' : ''
-              }`}
-            />
-          </div>
-        </button>
-
-        {showExplanation && (
-          <div className="px-5 pb-5 pt-1 text-xs text-neutral-300 border-t border-white/[0.06] space-y-3">
-            <p className="text-neutral-400 leading-relaxed text-[11px]">
-              Jika Anda menekan tombol <strong>&quot;Buka IG&quot;</strong> dan mendapati akun tidak ada atau halaman tidak tersedia, berikut beberapa penyebab utamanya:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
-                <span className="text-[10px] font-bold text-rose-400 font-mono uppercase tracking-wider">1. Akun Ditutup Sementara</span>
-                <p className="text-xs font-semibold text-white">Deactivate Akun</p>
-                <p className="text-[11px] text-neutral-400 leading-relaxed">
-                  Pemilik akun sedang menonaktifkan akunnya untuk istirahat dari media sosial. Akun tidak akan muncul di Instagram hingga pemiliknya login kembali.
-                </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
-                <span className="text-[10px] font-bold text-amber-400 font-mono uppercase tracking-wider">2. Akun Dihapus / Banned</span>
-                <p className="text-xs font-semibold text-white">Akun Dihapus Permanen</p>
-                <p className="text-[11px] text-neutral-400 leading-relaxed">
-                  Akun telah dihapus secara permanen oleh pemiliknya atau ditutup oleh Instagram karena melanggar pedoman komunitas.
-                </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
-                <span className="text-[10px] font-bold text-purple-400 font-mono uppercase tracking-wider">3. Mengganti Username</span>
-                <p className="text-xs font-semibold text-white">Ganti Nama Pengguna</p>
-                <p className="text-[11px] text-neutral-400 leading-relaxed">
-                  Pemilik akun telah mengganti username lamanya ke nama baru setelah berkas unduhan Meta Anda dibuat, sehingga link username lama tidak ditemukan.
-                </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
-                <span className="text-[10px] font-bold text-emerald-400 font-mono uppercase tracking-wider">4. Akun Diblokir</span>
-                <p className="text-xs font-semibold text-white">Pemblokiran Akun</p>
-                <p className="text-[11px] text-neutral-400 leading-relaxed">
-                  Pemilik akun memblokir akun Anda (atau sebaliknya), sehingga profil mereka tidak dapat diakses atau dilihat dari akun Anda.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-neutral-400">
-              💡 <strong>Catatan:</strong> Data pada aplikasi ini bersumber langsung dari berkas unduhan resmi Meta pada tanggal Anda meminta ekspor data.
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Main List Container */}
@@ -537,6 +457,135 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ data, onReset }) =
           <span>Menampilkan {displayList.length} dari {baseList.length} akun</span>
           <span className="text-[11px] text-neutral-500">Tips: Unfollow perlahan agar akun tetap aman</span>
         </div>
+      </div>
+
+      {/* Pemberitahuan: Informasi Akun & Penjelasan Perbedaan Jumlah */}
+      <div className="rounded-2xl border border-white/[0.08] bg-neutral-900/70 backdrop-blur-md overflow-hidden transition-all shadow-md">
+        <button
+          onClick={() => setShowExplanation(!showExplanation)}
+          className="w-full p-4 flex items-center justify-between text-left text-neutral-300 hover:text-white transition-colors cursor-pointer"
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="p-1.5 rounded-lg bg-rose-500/15 text-rose-400 shrink-0">
+              <HelpCircle className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs sm:text-sm font-bold text-white tracking-tight">
+                Pemberitahuan: Kenapa ada perbedaan atau akun tidak ditemukan saat dibuka?
+              </p>
+              <p className="text-[11px] text-neutral-400 truncate mt-0.5">
+                Penjelasan selisih jumlah angka &amp; penyebab halaman Instagram tidak tersedia
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0 ml-2">
+            <span className="text-[11px] text-rose-400 font-semibold hidden sm:inline">
+              {showExplanation ? 'Tutup' : 'Lihat Penjelasan'}
+            </span>
+            <ChevronDown
+              className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
+                showExplanation ? 'rotate-180 text-rose-400' : ''
+              }`}
+            />
+          </div>
+        </button>
+
+        {showExplanation && (
+          <div className="px-5 pb-5 pt-1 text-xs text-neutral-300 border-t border-white/[0.06] space-y-4">
+            {/* Bagian 1: Perbedaan Jumlah */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-rose-500 inline-block"></span>
+                <h4 className="text-xs sm:text-sm font-bold text-white">
+                  Kenapa jumlah akun di sini berbeda dengan angka di profil Instagram Anda?
+                </h4>
+              </div>
+              <p className="text-neutral-400 leading-relaxed text-[11px]">
+                Jika jumlah Following atau Followers di aplikasi ini berbeda dengan angka profil di aplikasi Instagram Anda, berikut penyebab utamanya:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-rose-400 font-mono uppercase tracking-wider">A. Akun Ditutup / Suspended</span>
+                  <p className="text-xs font-semibold text-white">Akun Diistirahatkan</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Counter di aplikasi Instagram Anda masih menghitung akun yang sedang ditutup/di-suspend, namun Meta tidak menyertakan akun tersebut dalam daftar file ekspor.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-amber-400 font-mono uppercase tracking-wider">B. Filter Akun Ghost Meta</span>
+                  <p className="text-xs font-semibold text-white">Pembersihan Akun Bot/Error</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Aplikasi ini otomatis menyaring akun error dari Meta (seperti ID angka atau format rusak) agar daftar akun Anda tetap bersih dan valid.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-cyan-400 font-mono uppercase tracking-wider">C. Perbedaan Waktu Unduh</span>
+                  <p className="text-xs font-semibold text-white">Waktu Ekspor vs Real-Time</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    File unduhan mencatat kondisi saat Anda meminta data ke Meta. Jika setelah itu ada yang baru mem-follow/unfollow, maka profil Instagram Anda sudah berubah.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-emerald-400 font-mono uppercase tracking-wider">D. Rumus Perhitungan Pasti</span>
+                  <p className="text-xs font-semibold text-white">100% Sesuai Data Asli</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Total Following = Unfollow + Mutuals. Total Followers = Follower (Fans) + Mutuals. Perhitungan matematis ini akurat mengikuti isi file unduhan Anda.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bagian 2: Kenapa Akun Tidak Tersedia Saat Dibuka */}
+            <div className="space-y-2 pt-2 border-t border-white/[0.06]">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                <h4 className="text-xs sm:text-sm font-bold text-white">
+                  Kenapa ada akun yang tidak ditemukan saat tombol &quot;Buka IG&quot; ditekan?
+                </h4>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-rose-400 font-mono uppercase tracking-wider">1. Akun Ditutup Sementara</span>
+                  <p className="text-xs font-semibold text-white">Deactivate Akun</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Pemilik akun sedang menonaktifkan akunnya. Akun tidak akan muncul di Instagram hingga pemiliknya login kembali.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-amber-400 font-mono uppercase tracking-wider">2. Akun Dihapus / Banned</span>
+                  <p className="text-xs font-semibold text-white">Akun Dihapus Permanen</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Akun telah dihapus secara permanen atau ditutup oleh Instagram karena melanggar pedoman komunitas.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-purple-400 font-mono uppercase tracking-wider">3. Mengganti Username</span>
+                  <p className="text-xs font-semibold text-white">Ganti Nama Pengguna</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Pemilik akun telah mengganti username lamanya ke nama baru setelah berkas unduhan dibuat, sehingga link username lama tidak ditemukan.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-white/[0.06] space-y-1">
+                  <span className="text-[10px] font-bold text-emerald-400 font-mono uppercase tracking-wider">4. Akun Diblokir</span>
+                  <p className="text-xs font-semibold text-white">Pemblokiran Akun</p>
+                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                    Pemilik akun memblokir akun Anda (atau sebaliknya), sehingga profil mereka tidak dapat diakses dari akun Anda.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-neutral-400">
+              💡 <strong>Catatan:</strong> Data pada aplikasi ini diekstrak langsung 100% dari berkas resmi Meta Anda secara privat di peramban tanpa perantara server.
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

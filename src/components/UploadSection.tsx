@@ -263,21 +263,6 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
                 </div>
               </div>
 
-              {/* Live Status Counters */}
-              <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto pt-1">
-                <div className="p-2.5 rounded-xl bg-neutral-950/70 border border-white/[0.06] text-center">
-                  <p className="text-[10px] text-neutral-400 uppercase font-bold">Following</p>
-                  <p className="text-base font-bold font-mono text-white mt-0.5">
-                    {progress?.followingCount !== undefined ? progress.followingCount : '...'}
-                  </p>
-                </div>
-                <div className="p-2.5 rounded-xl bg-neutral-950/70 border border-white/[0.06] text-center">
-                  <p className="text-[10px] text-neutral-400 uppercase font-bold">Followers</p>
-                  <p className="text-base font-bold font-mono text-white mt-0.5">
-                    {progress?.followersCount !== undefined ? progress.followersCount : '...'}
-                  </p>
-                </div>
-              </div>
 
               <p className="text-[11px] text-neutral-400 max-w-sm mx-auto leading-relaxed">
                 Analisis akun diproses secara aman langsung di browsermu tanpa login dan tanpa password.
@@ -487,7 +472,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
         >
           <div className="flex items-center gap-2">
             <HelpCircle className="w-4 h-4 text-rose-400" />
-            <span>Panduan Cara Download Data Instagram (1 Menit Saja)</span>
+            <span>Panduan Cara Download Data Instagram </span>
           </div>
           <ChevronDown
             className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
